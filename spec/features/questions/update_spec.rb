@@ -1,11 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Update a question" do
+  
   it "updates a new question" do
-    visit "/"
-    click_link "New Question"
-    fill_in "Title", with: "Is Capybara Cool?"
-    click_button "Create Rating question"
+    question = RatingQuestion.create(title: "Is Capybara Cool?")
     visit "/"
     click_link "Edit"
     fill_in "Title", with: "Is RSpec Cool?"

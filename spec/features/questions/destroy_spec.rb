@@ -1,16 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Delete questions" do
+  
   it "delete a question" do
-    visit "/"
-    click_link "New Question"
-    fill_in "Title", with: "Is Capybara Cool?"
-    click_button "Create Rating question"
-
-    within(".flash-notice") do
-      expect(page).to have_content("Your question has been created.")
-    end
-    
+    question = RatingQuestion.create(title: "Is Capybara Cool?")
     visit "/"
     click_link "Delete"
     

@@ -48,11 +48,6 @@ class RatingQuestionsController < ApplicationController
         format.html { redirect_to "/", notice: "Deleted Successfully" }
         format.json { render json: {}, status: :no_content }
       end
-    else
-      errors = @rating_question.errors.full_messages.to_sentence
-      respond_to do |format|
-        format.html { redirect_to "/", notice: errors }
-      end
     end
   end
 
