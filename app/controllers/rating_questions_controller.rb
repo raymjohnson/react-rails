@@ -13,7 +13,10 @@ class RatingQuestionsController < ApplicationController
       # flash[:notice] = "Your question has been created."
       redirect_to "/", notice: "Your question has been created."
     end
+  end
 
+  def edit
+    @rating_question = RatingQuestion.find(params[:id])
   end
 
   private
