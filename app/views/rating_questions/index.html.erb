@@ -1,7 +1,19 @@
 <div class="flash-notice"><%= flash[:notice] %></div>
 <%= link_to "New Question", new_rating_question_path %>
-<div class='questions'>
-  <% @rating_questions.each do |question| %>
-    <%= question.title %>
+<table class="questions">
+  <tr>
+    <th>Title</th>
+    <th>Tag</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @rating_questions.each do |rating_question| %>
+    <tr>
+      <td><%= rating_question.title %></td>
+      <td><%= rating_question.tag %></td>
+      <td><%= link_to 'Show', rating_question_path(rating_question) %></td>
+      <td><%= link_to 'Edit', edit_rating_question_path(rating_question) %></td>
+      <td><%= link_to 'Delete', rating_question_path(rating_question), method: :delete %></td>
+    </tr>
   <% end %>
-</div>
+</table>
