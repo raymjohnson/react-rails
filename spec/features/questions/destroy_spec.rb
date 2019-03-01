@@ -7,6 +7,8 @@ RSpec.describe "Delete questions" do
     visit "/"
     click_link "Delete"
     
+    page.accept_confirm
+
     within(".flash-notice") do
       expect(page).to have_content("Deleted Successfully")
     end

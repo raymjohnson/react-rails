@@ -14,7 +14,7 @@ class RatingQuestionsController < ApplicationController
     if @rating_question.save
       respond_to do |format|
         format.html { redirect_to @rating_question, notice: "Your question has been created." }
-        format.json { render :show, json: serialize_question(@rating_question), status: :created }
+        format.json { render :show, status: :created }
       end
     else
       errors = @rating_question.errors.full_messages.to_sentence
@@ -32,7 +32,7 @@ class RatingQuestionsController < ApplicationController
     if @rating_question.update(question_params)
       respond_to do |format|
         format.html { redirect_to @rating_question, notice: "Updated Successfully" }
-        format.json { render :show, json: serialize_question(@rating_question), status: :ok }
+        format.json { render :show , status: :ok }
       end
     else
       errors = @rating_question.errors.full_messages.to_sentence
@@ -58,14 +58,6 @@ class RatingQuestionsController < ApplicationController
 
   def question_params
     params.require(:rating_question).permit(:title, :tag)
-  end
-
-  def serialize_question(question)
-    {
-      id: question.id.to_s,
-      title: question.title,
-      tag: question.tag
-    }
   end
 
   def find_question

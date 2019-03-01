@@ -1,1 +1,1 @@
-json.hash! @rating_questions, partial: "rating_question", as: :rating_question
+json.partial! "rating_question", rating_question: @rating_question

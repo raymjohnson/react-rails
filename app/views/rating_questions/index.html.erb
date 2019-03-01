@@ -13,7 +13,7 @@
       <td><%= rating_question.tag %></td>
       <td><%= link_to 'Show', rating_question_path(rating_question) %></td>
       <td><%= link_to 'Edit', edit_rating_question_path(rating_question) %></td>
-      <td><%= link_to 'Delete', rating_question_path(rating_question), method: :delete %></td>
+      <td><%= link_to 'Delete', rating_question_path(rating_question), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %></td>
     </tr>
   <% end %>
 </table>
