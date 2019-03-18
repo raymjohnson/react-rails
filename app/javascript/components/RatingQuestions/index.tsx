@@ -5,32 +5,20 @@ import * as styles from './index.module.scss'
 import RatingQuestion from './RatingQuestion'
 
 interface Question {
+  id: string,
   title: string
 }
 
 interface RatingQuestionsProps {
-  apiURL: string
+  questions: Question[]
 }
 
-interface RatingQuestionsState {
-  ratingQuestions: Question[]
-}
-
-class RatingQuestions extends React.Component<RatingQuestionsProps, RatingQuestionsState> {
-  state = {
-    ratingQuestions: []
-  }
-
-  componentDidMount() {
-    axios.get(this.props.apiURL).then((response) =>
-      this.setState({ratingQuestions: response.data})
-    )
-  }
+class RatingQuestions extends React.Component<RatingQuestionsProps, {}> {
 
   render() {
     return(
       <div className={styles.list} data-automation-id='questions-list'>
-        {this.state.ratingQuestions.map((question) => <RatingQuestion key={question.id} {...question} />)}
+        {this.props.questions.map((question) => <RatingQuestion key={question.id} {...question} />)}
       </div>
     )
   }
