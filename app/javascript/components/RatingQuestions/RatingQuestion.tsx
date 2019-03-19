@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import RatingOption from './RatingOption';
 import Form from './Form';
 
-import * as styles from './styles/RatingQuestion.module.scss'
+import * as styles from './styles/question.module.scss'
 
 // import styles from './styles/Question.module.css';
 import button from './styles/button.module.scss';
@@ -48,16 +48,15 @@ class RatingQuestion extends Component<
 
   render(): JSX.Element {
     return (
-      // <div className={styles.questionBlock}>
-      <div>
-        <h1>{this.props.title}</ h1>
+      <div className={styles.questionBlock}>
+        <h1>{this.props.title}</h1>
 
         <h2>
-          <span>Selected option:</span>
+          <span className={styles.label}>Selected option:</span>
           {this.state.selectedOption}
         </h2>
 
-        <div>
+        <div className={styles.options}>
           {this.renderRatingOptions(this.props.title)}
         </div>
         <div className={button.wrapper}>
