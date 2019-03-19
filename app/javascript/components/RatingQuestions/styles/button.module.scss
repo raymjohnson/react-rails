@@ -1,0 +1,18 @@
+.wrapper {
+  display: inline-flex;
+}
+
+.submit,
+.destroy,
+.edit {
+  padding: 10px 15px;
+  color: white;
+  background: #222;
+  font-size: 1em;
+  margin-top: 10px;
+  display: block;
+}
+
+.delete {
+  margin-left: 20px;
+}

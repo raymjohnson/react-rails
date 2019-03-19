@@ -1,0 +1,28 @@
+.wrapper {
+  margin: 20px;
+}
+
+.formWrapper {
+  background-color: #eee;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+}
+
+.heading {
+  margin-left: -28px;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 2.5em;
+  background-color: #eee;
+  display: inline-block;
+}
+
+.visability {
+  display: block;
+  /* display: hidden; */
+}

@@ -1,8 +1,8 @@
 
 import * as React from 'react'
-import axios from 'axios'
-import * as styles from './index.module.scss'
+import * as styles from './styles/index.module.scss'
 import RatingQuestion from './RatingQuestion'
+import Form from './Form';
 
 interface Question {
   id: string,
@@ -15,12 +15,23 @@ interface RatingQuestionsProps {
 
 class RatingQuestions extends React.Component<RatingQuestionsProps, {}> {
 
-  render() {
-    return(
-      <div className={styles.list} data-automation-id='questions-list'>
-        {this.props.questions.map((question) => <RatingQuestion key={question.id} {...question} />)}
+  render(): JSX.Element {
+    return (
+      <div className={styles.wrapper}>
+        <h1 className={styles.heading}>Question Time</h1>
+        <div className={styles.formWrapper}>
+          <h2>Submit a new question:</h2>
+          <Form action="submit" id={""} />
+        </div>
+        {this.renderRatingQuestions()}
       </div>
-    )
+    );
+  }
+
+  renderRatingQuestions() {
+    return this.props.questions.map(optionSelected => (
+      <RatingQuestion key={optionSelected.id} {...optionSelected} />
+    ));
   }
 }
 
