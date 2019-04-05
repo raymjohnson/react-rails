@@ -7,7 +7,7 @@ RSpec.describe "GET /rating_questions" do
 
   it "shows a list of rating questions" do
     get "/rating_questions.json"
-    expect(response.status).to eq(200)
+    expect(response).to be_success
     json = JSON.parse(response.body)
     expect(json.is_a?(Array)).to be true
 
