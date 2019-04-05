@@ -1,51 +1,77 @@
-import React, { Component } from 'react';
-// import Axios from 'axios';
-
-// import styles from './styles/form.module.scss';
-// import button from './styles/button.module.scss';
-
-interface FormState {
-  title: string;
-}
+import React, { Component } from "react";
+import Axios from "axios";
 
 interface FormProps {
   id: string;
   action: string;
+  title: string;
+}
+
+interface FormState {
+  title: string;
+  flash: string;
 }
 
 class Form extends Component<FormProps, FormState> {
   state = {
-    title: '',
+    title: this.props.title || "",
+    flash: ""
   };
 
   handleChange = (event: React.FormEvent) => {
     this.setState({ title: (event.target as HTMLInputElement).value });
   };
 
-  handleSubmit = (event: React.FormEvent) => {
-    // if (this.props.action === 'submit') {
-    //   Axios.post('http://localhost:4567/ratingQuestions', {
-    //     title: this.state.title,
-    //   });
-    // } else if (this.props.action === 'edit') {
-    //   Axios.put(`http://localhost:4567/ratingQuestions/${this.props.id}`, {
-    //     title: this.state.title,
-    //   });
-    // }
+  createQuestion = () => {
+    Axios.post("/rating_questions.json", {
+      rating_question: { title: this.state.title }
+    }).then(response => {
+      this.setState({
+        flash: "Question created successfully"
+      });
+    });
   };
 
-  render(): JSX.Element {
+  updateQuestion = () => {
+    Axios.put(`/rating_questions/${this.props.id}.json`, {
+      rating_question: { title: this.state.title }
+    }).then(response => {
+      this.setState({
+        flash: "Question successfully updated"
+      });
+    });
+  };
+
+  handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    this.props.action === "submit"
+      ? this.createQuestion()
+      : this.updateQuestion();
+  };
+
+  renderForm = () => {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={(this.state as HTMLInputElement).value}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <h1>{this.state.flash ? this.state.flash : ""}</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            name="title"
+            value={this.state.title}
+          />
+          <br />
+          <button type="submit" className="submit">
+            {this.props.action === "submit"
+              ? "Create Question"
+              : "Update Question"}
+          </button>
+        </form>
+      </div>
     );
+  };
+
+  render() {
+    return <div>{this.renderForm()}</div>;
   }
 }
 

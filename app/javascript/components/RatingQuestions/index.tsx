@@ -1,38 +1,39 @@
+import * as React from "react";
+import styles from "./styles/index.module.scss";
+// import formStyles from "./styles/form.module.scss";
+import RatingQuestion from "./RatingQuestion";
+import Form from "./Form";
 
-import * as React from 'react'
-import * as styles from './styles/index.module.scss'
-import RatingQuestion from './RatingQuestion'
-import Form from './Form';
+interface ContainerProps {
+  questions: Question[];
+}
 
 interface Question {
-  id: string,
-  title: string
+  id: string;
+  title: string;
+  url: string;
 }
 
-interface RatingQuestionsProps {
-  questions: Question[]
-}
+class Container extends React.Component<ContainerProps, {}> {
+  renderRatingQuestions() {
+    const { questions } = this.props;
+    return questions.map(question => {
+      return <RatingQuestion key={question.id} {...question} />;
+    });
+  }
 
-class RatingQuestions extends React.Component<RatingQuestionsProps, {}> {
-
-  render(): JSX.Element {
+  render() {
     return (
       <div className={styles.wrapper}>
-        <h1 className={styles.heading}>Question Time</h1>
+        <h1 className={styles.heading}>Rating Questions</h1>
         <div className={styles.formWrapper}>
           <h2>Submit a new question:</h2>
-          <Form action="submit" id={""} />
+          <Form action="submit" id={""} title={""} />
         </div>
-        {this.renderRatingQuestions()}
+        <div>{this.renderRatingQuestions()}</div>
       </div>
     );
   }
-
-  renderRatingQuestions() {
-    return this.props.questions.map(optionSelected => (
-      <RatingQuestion key={optionSelected.id} {...optionSelected} />
-    ));
-  }
 }
 
-export default RatingQuestions
+export default Container;

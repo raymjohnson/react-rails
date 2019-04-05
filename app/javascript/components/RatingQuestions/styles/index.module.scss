@@ -2,17 +2,10 @@
   margin: 20px;
 }
 
-.formWrapper {
-  background-color: #eee;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 8px;
-  position: fixed;
-  right: 30px;
-  top: 30px;
-}
-
 .heading {
+  // position: absolute;
+  // top: 10px;
+  // left: 0px;
   margin-left: -28px;
   margin-bottom: 30px;
   padding-left: 10px;
@@ -25,4 +18,12 @@
 .visability {
   display: block;
   /* display: hidden; */
+}
+
+.formWrapper {
+  background-color: #eee;
+  padding: 15px 20px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
 }
