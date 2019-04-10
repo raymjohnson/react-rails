@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import RatingOption from "./RatingOption";
 import Form from "./Form";
-
+import styles from "./styles/form.module.scss";
 import styles from "./styles/question.module.scss";
 import button from "./styles/button.module.scss";
 
