@@ -1,4 +1,6 @@
 class GraphqlController < ApplicationController
+
+  # This is executed against the SurveyorSchema
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
@@ -7,7 +9,12 @@ class GraphqlController < ApplicationController
       # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = SurveyorSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = SurveyorSchema.execute(
+      query: query,
+      variables: variables,
+      context: context,
+      operation_name: operation_name
+    )
     render json: result
   rescue => e
     raise e unless Rails.env.development?
