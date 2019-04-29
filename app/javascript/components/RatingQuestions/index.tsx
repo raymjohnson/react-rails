@@ -14,7 +14,7 @@ interface Question {
   url: string;
 }
 
-class Container extends React.Component<ContainerProps, {}> {
+export default class Container extends React.Component<ContainerProps, {}> {
   renderRatingQuestions() {
     const { questions } = this.props;
     return questions.map(question => {
@@ -35,5 +35,3 @@ class Container extends React.Component<ContainerProps, {}> {
     );
   }
 }
-
-export default Container;

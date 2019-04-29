@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 interface RatingOptionProps {
   title: string;
@@ -6,7 +6,7 @@ interface RatingOptionProps {
   optionSelected(value: string): void;
 }
 
-class RatingOption extends Component<RatingOptionProps> {
+export default class RatingOption extends Component<RatingOptionProps> {
   optionSelected = (event: React.FormEvent) => {
     this.props.optionSelected((event.target as HTMLInputElement).value);
   };
@@ -27,5 +27,3 @@ class RatingOption extends Component<RatingOptionProps> {
     );
   }
 }
-
-export default RatingOption;

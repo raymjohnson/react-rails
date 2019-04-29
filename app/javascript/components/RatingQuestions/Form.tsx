@@ -12,7 +12,7 @@ interface FormState {
   flash: string;
 }
 
-class Form extends Component<FormProps, FormState> {
+export default class Form extends Component<FormProps, FormState> {
   state = {
     title: this.props.title || "",
     flash: ""
@@ -74,5 +74,3 @@ class Form extends Component<FormProps, FormState> {
     return <div>{this.renderForm()}</div>;
   }
 }
-
-export default Form;
