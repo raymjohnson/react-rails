@@ -1,9 +1,9 @@
 module Types
   class CreateRatingQuestionResult < BaseUnion
-    possible_types QuestionType, FailedCreateRatingQuestionResult
+    possible_types QuestionType, ValidationError
 
     def self.resolve_type(object, _context)
-      object.persisted? ? QuestionType : FailedCreateRatingQuestionResult
+      object.persisted? ? QuestionType : ValidationError
     end
 
   end

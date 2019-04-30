@@ -1,5 +1,5 @@
 module Types
-  class FailedCreateRatingQuestionResult < BaseObject
+  class ValidationError < BaseObject
     field :errors, String, null: false
 
     def errors
