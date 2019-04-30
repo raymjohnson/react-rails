@@ -21,6 +21,7 @@ end
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Mongoid.raise_not_found_error = true
 
 module Surveyor
   class Application < Rails::Application

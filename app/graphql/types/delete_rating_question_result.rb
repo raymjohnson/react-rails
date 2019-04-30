@@ -1,10 +1,9 @@
 module Types
   class DeleteRatingQuestionResult < BaseUnion
-    possible_types QuestionType, ValidationError
+    possible_types QuestionType, DocumentNotFoundError
 
     def self.resolve_type(object, _context)
-      object.persisted? ? ValidationError : QuestionType
+      object.is_a?(Mongoid::Errors::DocumentNotFound) ? DocumentNotFoundError : QuestionType
     end
-
   end
 end

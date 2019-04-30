@@ -11,6 +11,7 @@ module Types
 
     field :update_question, UpdateRatingQuestionResult, null: false do
       argument :id, ID, required: true
+      argument :title, String, required: true
     end
 
     def create_question(title:)
@@ -18,14 +19,23 @@ module Types
     end
 
     def destroy_question(id:)
-      rating_question = RatingQuestion.find(id)
-      rating_question.destroy
-      rating_question
+      begin
+        rating_question = RatingQuestion.find(id)
+        rating_question.destroy
+        rating_question
+      rescue Mongoid::Errors::DocumentNotFound => error
+        error
+      end
     end
 
-    def update_question(id:)
-      rating_question = RatingQuestion.find(id)
-      rating_question.update
+    def update_question(id:, title:)
+      begin
+        rating_question = RatingQuestion.find(id)
+        rating_question.update(title: title)
+        rating_question
+      rescue Mongoid::Errors::DocumentNotFound => error
+        error
+      end
     end
 
   end
