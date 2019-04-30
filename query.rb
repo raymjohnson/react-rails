@@ -1,11 +1,12 @@
 query = """
   query {
     questions
+    survey
   }
 """
 
 result = SurveyorSchema.execute(
-  query: query
+  query: query,
 )
 
 p result

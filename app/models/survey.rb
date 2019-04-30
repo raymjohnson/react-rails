@@ -4,5 +4,4 @@ class Survey
   has_many :rating_questions
 
   field :name, type: String
-
 end
