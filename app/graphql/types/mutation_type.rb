@@ -14,6 +14,16 @@ module Types
       argument :title, String, required: true
     end
 
+    field :login, LoginResult, null: false do
+      argument :email, String, required: true
+      argument :password, String, required: true
+    end
+
+    def login(email:, password:)
+      user = User.find_by(email: email)
+      user&.authenticate(password)
+    end
+
     def create_question(survey_id:, title:)
       survey = Survey.find(survey_id)
       survey.rating_questions.create(title: title)
