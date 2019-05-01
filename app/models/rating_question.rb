@@ -4,7 +4,6 @@ class RatingQuestion
   belongs_to :survey
 
   field :title, type: String
-  field :tag, type: String
 
   validates :title, presence: true
 end
