@@ -21,7 +21,13 @@ module Types
 
     def login(email:, password:)
       user = User.find_by(email: email)
-      user&.authenticate(password)
+      return {} unless user.authenticate(password)
+
+      {
+        "email": email,
+        "id": user.id.to_s,
+        "token": user.new_token,
+      }
     end
 
     def create_question(survey_id:, title:)

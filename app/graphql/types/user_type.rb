@@ -1,7 +1,7 @@
 module Types
-  class SuccessfulLoginResult < Types::BaseObject
+  class UserType < Types::BaseObject
+    field :name, String, null: false
     field :email, String, null: false
     field :password, String, null: false
-    field :token, String, null: false
   end
 end
