@@ -4,6 +4,8 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  config.action_controller.forgery_protection_origin_check = false
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -19,7 +21,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -38,7 +40,6 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
 
   # Highlight code that triggered database queries in logs.
-
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
